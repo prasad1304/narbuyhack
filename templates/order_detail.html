@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+
+
+<div>
+
+    <ul>
+        {% for i in orders %}
+
+        {% for item in i.items.all %}
+
+        <li>{{item}}</li>
+        <li>being_delivered:{{i.being_delivered}}</li>
+        <li>received:{{i.received}}</li>
+        <li>Your id :{{i.payment.stripe_charge_id}}</li>
+
+        {% endfor %}
+
+        {% endfor %}
+    </ul>
+</div>
+
+
+
+
+{% endblock %}

@@ -1,0 +1,161 @@
+{% load static %}
+{% load cart_template_tags %}
+<!doctype html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>header</title>
+  <!-- Google font -->
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,500,700" rel="stylesheet">
+
+  <!-- Bootstrap -->
+  <link type="text/css" rel="stylesheet" href="{% static 'css1/bootstrap.min.css' %}" />
+
+  <!-- Slick -->
+  <link type="text/css" rel="stylesheet" href="{% static 'css1/slick.css' %}" />
+  <link type="text/css" rel="stylesheet" href="{% static 'css1/slick-theme.css' %}" />
+
+  <!-- nouislider -->
+  <link type="text/css" rel="stylesheet" href="{% static 'css1/nouislider.min.css' %}" />
+
+  <!-- Font Awesome Icon -->
+  <link rel="stylesheet" href="{% static 'css1/font-awesome.min.css' %}">
+
+  <!-- Custom stlylesheet -->
+  <link type="text/css" rel="stylesheet" href="{% static 'css1/style.css' %}" />
+  <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"
+    integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+</head>
+
+<body>
+
+  <div id="top-header">
+    <div class="container">
+      <ul class="header-links pull-left">
+        <li><a href="#"><i class="fa fa-phone"></i> 8639042810</a></li>
+        <li><a href="#"><i class="fa fa-envelope-o"></i> admin@vcart.com</a></li>
+        <li><a href="#"><i class="fa fa-map-marker"></i> St. Peter's Engineering College</a></li>
+      </ul>
+      <ul class="header-links pull-right">
+
+        <li><a href="{% url 'core:profile' %}"><i class="fa fa-user-o"></i> My Account</a></li>
+      </ul>
+    </div>
+  </div>
+  <div id="header">
+    <!-- container -->
+    <div class="container">
+      <!-- row -->
+      <div class="row">
+        <!-- LOGO -->
+        <div class="col-md-3">
+          <div class="header-logo">
+            <a href="/" class="logo">
+
+              <h1 style="color: red; font-size: 30px;vertical-align: baseline;">NearBuy</h1>
+            </a>
+          </div>
+        </div>
+        <!-- /LOGO -->
+
+        <!-- SEARCH BAR -->
+        <div class="col-md-6">
+          <div class="header-search"> 
+            <form>
+              <select class="input-select">
+                <option value="0">Shops</option>
+                
+
+
+              </select>
+
+              <input class="input" placeholder="Search here">
+              <button class="search-btn">Search</button>
+            </form>
+          </div>
+        </div>
+        <!-- /SEARCH BAR -->
+        <div class="col-md-1 clearfix">
+          <div class="header-ctn">
+            <!-- Wishlist -->
+            <div>
+              <a href="{% url 'core:order-summary' %}">
+                <i class="fa fa-shopping-cart"></i>
+                <span>cart</span>
+                <div class="qty">{{ request.user|cart_item_count }}</div>
+              </a>
+            </div>
+            <!-- /Wishlist -->
+
+          </div>
+        </div>
+        {% if request.user.is_authenticated %}
+        <!-- ACCOUNT -->
+
+
+
+
+        <div class="col-md-1 clearfix">
+          <div class="header-ctn">
+            <!-- Wishlist -->
+            <div>
+              <a href="{% url 'account_logout' %}">
+                <i class="fa fa-sign-out"></i>
+                <span>logout</span>
+
+              </a>
+            </div>
+            <!-- /Wishlist -->
+
+          </div>
+        </div>
+
+
+        {% else %}
+
+        <div class="col-md-1 clearfix">
+          <div class="header-ctn">
+            <!-- Wishlist -->
+            <div>
+              <a href="{% url 'account_login' %}">
+                <i class="fa fa-sign-in"></i>
+                <span>Login</span>
+
+              </a>
+            </div>
+            <!-- /Wishlist -->
+
+          </div>
+        </div>
+        <div class="col-md-1 clearfix">
+          <div class="header-ctn">
+            <!-- Wishlist -->
+            <div>
+              <a href="{% url 'account_signup' %}">
+                <i class="fa fa-user-plus"></i>
+                <span>Signup</span>
+
+              </a>
+            </div>
+            <!-- /Wishlist -->
+
+          </div>
+        </div>
+        {% endif %}
+
+        <!-- /ACCOUNT -->
+      </div>
+      <!-- row -->
+    </div>
+    <!-- container -->
+  </div>
+  <!-- /MAIN HEADER -->
+  </header>
+
+
+
+
+</body>
+
+</html>

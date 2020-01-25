@@ -1,0 +1,51 @@
+{% extends "corporate/index.html" %}
+
+{% load crispy_forms_tags %}
+
+
+{% block content %}
+
+
+     <!-- /.sidebar -->
+
+   <!-- Content Wrapper. Contains page content -->
+   
+ 
+     <!-- Main content -->
+     <section class="content" style="margin-left: 20%;">
+       <div class="container-fluid">
+         <div class="row">
+           <!-- left column -->
+           <div class="col-md-6">
+             <!-- general form elements -->
+             <div class="card card-primary">
+               <div class="card-header">Handicraft Form<br>
+               </div>
+               <!-- /.card-header -->
+               <!-- form start -->
+               <form role="form" method="POST" action="{% url 'corporate:Smallsubmission' %}" enctype="multipart/form-data">
+                 <div class="card-body">
+                   <div class="form-group">
+                     {% csrf_token %}
+                     {{ f_form|crispy }}
+                   </div>
+                   
+             
+                   </div>
+ 
+                   <input type="submit" value="Add Product" class="btn btn-primary" style="margin-left: 77%;margin-top: -20px;">
+                   
+               </form>
+               </div>
+               </div>
+               </div>
+               </section>
+ 
+            
+   <!-- /.content-wrapper -->
+  
+
+   
+   
+
+{% endblock %}
